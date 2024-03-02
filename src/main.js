@@ -25,6 +25,11 @@ class Player {
 
     selectMove(move) {
         this.selectedMove = move;
+        this.selectedSubAttack = null; // Reset selected sub-attack when a new move is chosen
+    }
+
+    selectSubAttack(subAttack) {
+        this.selectedSubAttack = subAttack;
     }
 
     attack(opponent) {
@@ -118,7 +123,12 @@ class Game {
             console.log(this.player1.name + " HP: " + this.player1.getHp());
             console.log(this.player2.name + " HP: " + this.player2.getHp());
             this.player1.selectMove(prompt(this.player1.name + "'s turn: Select move (punch/kick/block): "));
+            // After selecting move, ask for sub-attack
+            this.player1.selectSubAttack(prompt("Select sub-attack (uppercut/hook/straight): "));
+
             this.player2.selectMove(prompt(this.player2.name + "'s turn: Select move (punch/kick/block): "));
+            // After selecting move, ask for sub-attack
+            this.player2.selectSubAttack(prompt("Select sub-attack (uppercut/hook/straight): "));
 
             this.player1.attack(this.player2);
             this.player2.attack(this.player1);
