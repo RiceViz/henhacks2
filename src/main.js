@@ -26,11 +26,27 @@ class Player {
     }
 
     selectMove(move) {
-        this.selectedMove = move;
+        while (true) {
+            if (move === "punch" || move === "kick" || move === "block") {
+                this.selectedMove = move;
+                break;
+            } else {
+                move = prompt("Invalid input. " + this.name + "'s turn: Select move (punch/kick/block): ");
+            }
+        }
     }
 
     selectSubAttack(subAttack) {
-        this.selectedSubAttack = subAttack;
+        while (true) {
+            if (subAttack === "straight" || subAttack === "hook" || subAttack === "uppercut" ||
+                subAttack === "axe" || subAttack === "side" || subAttack === "roundhouse" ||
+                subAttack === "x" || subAttack === "side" || subAttack === "medial") {
+                this.selectedSubAttack = subAttack;
+                break;
+            } else {
+                subAttack = prompt("Invalid input. " + this.name + "'s turn: Select sub-attack: ");
+            }
+        }
     }
 
     defend() {
