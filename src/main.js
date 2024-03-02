@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-
 import HelloWorldScene from './HelloWorldScene'
 
 const config = {
@@ -14,6 +13,6 @@ const config = {
 		},
 	},
 	scene: [HelloWorldScene],
+	
 }
-
 export default new Phaser.Game(config)

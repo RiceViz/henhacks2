@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
-
+import problems,{ globalNum1, globalNum2 } from './problems'
+import addAndSubtract from './problems'
 export default class HelloWorldScene extends Phaser.Scene {
 	constructor() {
 		super('hello-world')
@@ -7,15 +8,18 @@ export default class HelloWorldScene extends Phaser.Scene {
 
 	preload() {
 		this.load.setBaseURL('https://labs.phaser.io')
-
 		this.load.image('sky', 'assets/skies/space3.png')
 		this.load.image('logo', 'assets/sprites/phaser3-logo.png')
 		this.load.image('red', 'assets/particles/red.png')
+		
 	}
 
 	create() {
 		this.add.image(400, 300, 'sky')
-
+		const problemInstance = new problems();
+		const result = problemInstance.addAndSubtract();
+		console.log(result)
+		console.log(globalNum1)
 		const particles = this.add.particles('red')
 
 		const emitter = particles.createEmitter({
@@ -29,7 +33,10 @@ export default class HelloWorldScene extends Phaser.Scene {
 		logo.setVelocity(100, 200)
 		logo.setBounce(1, 1)
 		logo.setCollideWorldBounds(true)
+		
 
 		emitter.startFollow(logo)
+		
 	}
+	
 }
